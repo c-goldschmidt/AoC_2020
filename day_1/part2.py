@@ -1,13 +1,10 @@
 import itertools
-import os
-from time import time
 
-from utils import read_file
+from utils import run
 
 
-def get_list():
-    content = read_file(os.path.join(os.path.dirname(__file__), 'input.txt'))
-    return content.split('\n')
+def get_input(content):
+    return [item for item in content.split('\n') if item]
 
 
 def get_answer(input):
@@ -21,7 +18,5 @@ def get_answer(input):
 
 
 if __name__ == '__main__':
-    t0 = time()
-    print(f'answer: {get_answer(get_list())}')
-    print(f'{time() - t0}')
+    run(__file__, get_input, get_answer)
 

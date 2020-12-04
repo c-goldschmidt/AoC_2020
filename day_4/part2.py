@@ -1,8 +1,6 @@
-import os
 import re
-from time import time
 
-from utils import read_file
+from utils import run
 
 rx_key_value = re.compile(r'(?P<key>\w{3}):(?P<value>\S+)(\s|$)')
 rx_size = re.compile(r'^(?P<num>\d+)(?P<unit>\w{2})$')
@@ -10,9 +8,8 @@ rx_color = re.compile(r'^#[a-f0-9]{6}$')
 rx_pid = re.compile(r'^\d{9}$')
 
 
-def get_input():
-    content = read_file(os.path.join(os.path.dirname(__file__), 'input.txt'))
-    return (item for item in content.split('\n\n'))
+def get_input(content):
+    return (item for item in content.split('\n\n') if item)
 
 
 def validate(key, value):
@@ -65,7 +62,5 @@ def get_answer(input):
 
 
 if __name__ == '__main__':
-    t0 = time()
-    print(f'answer: {get_answer(get_input())}')
-    print(f'{time() - t0}')
+    run(__file__, get_input, get_answer)
 
