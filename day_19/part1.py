@@ -34,8 +34,7 @@ class Rule:
         else:
             possible_matches = []
             for rule in self.match_rules:
-                sub_matching = self.match_sub_rules(str_in, rule)
-                possible_matches += sub_matching
+                possible_matches += self.match_sub_rules(str_in, rule)
 
             return possible_matches
 
